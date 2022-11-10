@@ -1,7 +1,7 @@
 <?php
 class User{
     public $number, $name, $surname, $instagram, $facebook, 
-    $houseType, $areaOfLiving, $city, $discription, $photo;
+    $houseType, $areaOfLiving, $city, $discription, $linkToPhoto;
 
     public function __construct(array $userData = []) {
         $this->number = $userData['number'];
@@ -16,12 +16,49 @@ class User{
         
         $this->discription = $userData['discription'];
 
-        $this->photo = $userData['photo'];
+        $this->linkToPhoto = $userData['linkToPhoto'];
     }
     public function changeUserData($option, $value) {
         $this->$option = $value;
     }
-    
+    public function getAllUserData() {
+        return [
+            'number' => $this->number,
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'instagram' => $this->instagram,
+            'facebook' => $this->facebook,
+            
+            'houseType' => $this->houseType,
+            'areaOfLiving' => $this->areaOfLiving,
+            'city' => $this->city,
+            
+            'discription' => $this->discription,
+            'photo' => $this->linkToPhoto
+        ];
+    }
+    public function getUserData() {
+        return [
+            'number' => $this->number,
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'instagram' => $this->instagram,
+            'facebook' => $this->facebook,
+        ];
+    }
+    public function getHouseData() {
+        return [
+            'houseType' => $this->houseType,
+            'areaOfLiving' => $this->areaOfLiving,
+            'city' => $this->city,
+        ];
+    }
+    public function getDiscription() {
+        return $this->discription;
+    }
+    public function getPhoto() {
+        return $this->linkToPhoto;
+    }
 }
 
 
