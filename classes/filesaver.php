@@ -1,14 +1,15 @@
 <?php
 class FileSaver {
-    public $dataDir = __DIR__ . '../storage/';
-    public function saveDataInFile($data) {
-        $file = fopen("data". $data->id .".txt", "a");
+    public $dataDir = __DIR__ . '/../storage/';
+    public function saveDataInFile($data, $id) {
+        echo $id . " ";
+        $file = fopen($this->dataDir."data". $id .".txt", "a");
         fwrite($file, json_encode($data));
         fclose($file);
     }
-    public function getDataFromFile($fileName) {
-        $file = fopen($fileName, "r");
-        $data = fread($file, filesize($fileName));
+    public function getDataFromFile($filePath) {
+        $file = fopen($filePath, "r");
+        $data = fread($file, filesize($filePath));
         fclose($file);
         return json_decode($data);
     }
@@ -21,6 +22,16 @@ class FileSaver {
             }
         }
         return $data;
+    }
+    public function numberOfFiles() {
+        $files = scandir($this->dataDir);
+        $count = 0;
+        foreach($files as $file) {
+            if(strpos($file, "data") !== false) {
+                $count++;
+            }
+        }
+        return $count;
     }
 }
 

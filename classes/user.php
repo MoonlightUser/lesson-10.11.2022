@@ -2,7 +2,7 @@
 class User{
     public $number, $name, $surname, $instagram, $facebook, 
     $houseType, $areaOfLiving, $city, $discription, $linkToPhoto;
-
+    public $id;
     public function __construct(array $userData = []) {
         $this->number = $userData['number'];
         $this->name = $userData['name'];

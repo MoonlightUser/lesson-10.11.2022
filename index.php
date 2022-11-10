@@ -1,29 +1,4 @@
-<?php
-require_once __DIR__ . '/classes/user.php';
-require_once __DIR__ . '/classes/saver.php';
 
-
-if (isset($_POST["form"])){
-    $user = new User([
-        'number' => $_POST['number'],
-        'name' => $_POST['name'],
-        'surname' => $_POST['surname'],
-        'instagram' => $_POST['instagram'],
-        'facebook' => $_POST['facebook'],
-        
-        'houseType' => $_POST['houseType'],
-        'areaOfLiving' => $_POST['areaOfLiving'],
-        'city' => $_POST['city'],
-        
-        'discription' => $_POST['discription'],
-        'linkToPhoto' => $_POST['linkToPhoto']
-    ]);
-    
-    $saver = new Saver();
-    
-}
-
-?>
 
 
 
@@ -36,7 +11,7 @@ if (isset($_POST["form"])){
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="forms.php" method="post">
         <input type="text" name="name" placeholder="name">
         <input type="text" name="surname" placeholder="surname">
         <input type="text" name="instagram" placeholder="instagram">
