@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/classes/user.php';
+require_once __DIR__ . '/classes/saver.php';
 
 
 if (isset($_POST["form"])){
@@ -17,9 +18,9 @@ if (isset($_POST["form"])){
         'discription' => $_POST['discription'],
         'linkToPhoto' => $_POST['linkToPhoto']
     ]);
-    var_dump(
-        $user->getAllUserData()
-    );
+    
+    $saver = new Saver();
+    
 }
 
 ?>
