@@ -14,13 +14,15 @@ class FileSaver {
         return json_decode($data);
     }
     public function getAllData($dataBase) {
-        $data = [];
         $files = scandir($dataBase);
-        foreach($files as $file) {
-            if(strpos($file, "data") !== false) {
-                array_push($data, $this->getDataFromFile($file));
-            }
+        $files = array_diff($files, array('.', '..'));
+        $files = array_values($files);
+        $data = [];
+        foreach($files as $key => $file) {
+            $this->getDataFromFile($dataBase . $file);
+            array_push($data, $this->getDataFromFile($dataBase . $file));
         }
+        print_r($data);
         return $data;
     }
     public function numberOfFiles() {
